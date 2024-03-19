@@ -1,0 +1,23 @@
+.main{
+    padding-top: 2%;
+    padding-left: 8%;
+    padding-right: 8%;
+}
+
+.nps{
+    text-align: justify;
+    padding-bottom: 2%;
+}
+
+.csat{
+    text-align: justify;
+    padding-bottom: 2%;
+}
+.subtags{
+    text-align: justify;
+    padding-bottom: 2%;
+}
+
+.btn-center{
+    text-align: center;
+}

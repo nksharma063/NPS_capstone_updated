@@ -1,0 +1,73 @@
+version: '3'
+
+services:
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    depends_on:
+      - authservice
+      - baseservice
+      - calculationservice
+      # - coreapiservice
+      - nps
+      #- urlshortnerservice
+      - userdataservice
+
+  authservice:
+    build:
+      context: ./backend/authService
+      dockerfile: Dockerfile
+    ports:
+      - "3001:3001"
+    # Add any additional configuration for authservice as needed
+
+  baseservice:
+    build:
+      context: ./backend/baseService
+      dockerfile: Dockerfile
+    ports:
+      - "3003:3003"
+    # Add any additional configuration for baseservice as needed
+
+  calculationservice:
+    build:
+      context: ./backend/calculationService
+      dockerfile: Dockerfile
+    ports:
+      - "3008:3008"
+    # Add any additional configuration for calculationservice as needed
+
+  # coreapiservice:
+  #   build:
+  #     context: ./backend/coreapiservice
+  #     dockerfile: Dockerfile
+    # ports:
+    #   - "3004:3004"
+    # Add any additional configuration for coreapiservice as needed
+
+  nps:
+    build:
+      context: ./backend/nps
+      dockerfile: Dockerfile
+    ports:
+      - "3005:3005"
+    # Add any additional configuration for nps as needed
+
+  # urlshortnerservice:
+  #   build:
+  #     context: ./backend/urlshortnerservice
+  #     dockerfile: Dockerfile
+  #   ports:
+  #     - "3006:3006"
+    # Add any additional configuration for urlshortnerservice as needed
+
+  userdataservice:
+    build:
+      context: ./backend/userDataService
+      dockerfile: Dockerfile
+    ports:
+      - "3006:3006"
+    # Add any additional configuration for userdataservice as needed
