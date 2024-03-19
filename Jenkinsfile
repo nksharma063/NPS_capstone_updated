@@ -11,7 +11,8 @@ pipeline {
         stage('Build and push NPS push to the ECR') {
             steps {
                 script {
-                    git branch: 'main', url: 'https://github.com/sayanalokesh/NPS_capstone_updated.git', credentialsId: 'gitAutoDeployToken'
+                    git branch: 'main', url: 'https://github.com/sayanalokesh/NPS_capstone_updated.git'
+                    // , credentialsId: 'gitAutoDeployToken'
                     // sh "${WORKSPACE}/SampleMERNwithMicroservices/"
                     sh 'whoami'
                     sh 'sudo docker-compose build'
