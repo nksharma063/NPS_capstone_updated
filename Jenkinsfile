@@ -19,7 +19,7 @@ pipeline {
                         parameters: [string(defaultValue: '', description: '', name: 'password')]
                     )
                     // Configure sudo to not require password for docker-compose
-                    sh 'echo "${userInput}" | sudo -S sh -c "echo \"%sudo ALL=(ALL) NOPASSWD: /var/lib/jenkins/workspace/nps_capstone/docker-compose\" > /etc/sudoers.d/docker-compose"'
+                    sh 'echo "${userInput}" | sudo -S sh -c "echo \"%sudo ALL=(ALL) NOPASSWD: /var/lib/jenkins/workspace/nps_capstone/docker-compose.yml" > /etc/sudoers.d/docker-compose"'
                     // Use docker-compose without sudo
                     sh 'docker-compose build'
                     sh 'docker-compose up -d'
