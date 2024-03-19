@@ -15,7 +15,7 @@ pipeline {
                     // , credentialsId: 'gitAutoDeployToken'
                     // sh "${WORKSPACE}/SampleMERNwithMicroservices/"
                     sh 'whoami'
-                    sh 'echo "password" | sudo -S docker-compose build'
+                    sh 'echo "53e8643e7c624791abd8a46ae3f185b8" | sudo -S docker-compose build'
                     // sh 'sudo docker-compose build'
                     sh 'sudo docker-compose up -d'
                     // sh 'docker build -t helloworld-image .'
