@@ -12,11 +12,11 @@ pipeline {
             steps {
                 script {
                     git branch: 'main', url: 'https://github.com/sayanalokesh/NPS_capstone_updated.git'
+                     sh 'docker-compose build'
                     // , credentialsId: 'gitAutoDeployToken'
                     // sh "${WORKSPACE}/SampleMERNwithMicroservices/"
                     // sh 'whoami'
                     // sh 'echo "HeroVired" | sudo -S docker-compose build'
-                    sh 'sudo docker-compose build'
                     // sh 'echo "HeroVired" sudo docker-compose up -d'
                     // // sh 'docker build -t helloworld-image .'
                     // // withCredentials([usernamePassword(credentialsId: 'ecr_docker_creds', passwordVariable: 'DOCKER_PASSWORD', usernameVariable: 'DOCKER_USERNAME')]) {
