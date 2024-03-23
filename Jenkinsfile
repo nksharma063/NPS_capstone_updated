@@ -3,7 +3,7 @@ pipeline {
 
     environment {
         AWS_REGION = 'ap-south-1'
-        ECR_REPO_URL = 'https://gallery.ecr.aws/s7f2n3x3'
+        ECR_REPO_URL = 'public.ecr.aws/s7f2n3x3/npsfrontend'
         ECR_REGISTRY = 'public.ecr.aws/s7f2n3x3/npsfrontend'
     }
 
