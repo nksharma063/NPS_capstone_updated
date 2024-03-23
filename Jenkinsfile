@@ -13,7 +13,7 @@ pipeline {
                 script {
                     git branch: 'main', url: 'https://github.com/sayanalokesh/NPS_capstone_updated.git'
                     sh 'ls'
-                    sh 'echo "jenkins" | sudo -S docker-compose build'
+                    sh 'echo "admin" | sudo -S docker-compose build'
                     sh 'grep -oP "image: \\K.*" docker-compose.yml | xargs -I {} sudo docker push {}'
                     sh 'docker tag helloworld-image:latest ${ECR_REPO_URL}/helloworld-image:latest'
                     sh 'docker push ${ECR_REPO_URL}/helloworld-image:latest'
