@@ -21,7 +21,7 @@ pipeline {
                     sh "echo '${userInput}' | sudo -S sh -c 'echo \"%sudo ALL=(ALL) NOPASSWD: /var/lib/jenkins/workspace/nps_capstone/docker-compose\" > /etc/sudoers.d/docker-compose'"
                     sh 'ls'
                     sh 'whoami'
-                    sh 'sudo docker-compose build'
+                    sh 'sudo -S docker-compose build'
                     sh 'grep -oP "image: \\K.*" docker-compose.yml | xargs -I {} sudo docker push {}'
                     sh 'docker tag helloworld-image:latest ${ECR_REPO_URL}/helloworld-image:latest'
                     sh 'docker push ${ECR_REPO_URL}/helloworld-image:latest'
