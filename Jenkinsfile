@@ -20,7 +20,6 @@ pipeline {
         }
     }
 
-    stages {
         stage('Push the FE image to the ECR') {
             steps {
                 script {                    
@@ -30,5 +29,4 @@ pipeline {
                 }
             }
         }
-    }
 }
