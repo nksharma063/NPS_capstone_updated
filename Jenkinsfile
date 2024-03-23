@@ -31,10 +31,10 @@ pipeline {
                         ]
                     ]) {
                         sh 'echo $AWS_ACCESS_KEY_ID'
-                        sh "aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin ${ECR_REPO_URL}"                                          
+                        sh "aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin public.ecr.aws/s7f2n3x3"                                          
                         // sh 'grep -oP "image: \\K.*" docker-compose.yml | xargs -I {} sudo docker push {}'
-                        sh 'docker tag nps_pipeline_lan_frontend:latest ${ECR_REPO_URL}/npsfrontend:latest'
-                        sh 'docker push ${ECR_REPO_URL}/npsfrontend:latest'
+                        sh 'docker tag nps_pipeline_lan_frontend:latest public.ecr.aws/s7f2n3x3/npsfrontend:latest'
+                        sh 'docker push public.ecr.aws/s7f2n3x3/npsfrontend:latest'
                     }
                 }
             }
