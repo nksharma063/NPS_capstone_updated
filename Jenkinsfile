@@ -4,7 +4,7 @@ pipeline {
     environment {
         AWS_REGION = 'ap-south-1'
         ECR_REPO_URL = 'public.ecr.aws/s7f2n3x3/npsfrontend'
-        ECR_REGISTRY = 'public.ecr.aws/s7f2n3x3/npsfrontend'
+        ECR_REGISTRY = 'public.ecr.aws/s7f2n3x3'
     }
 
     stages {
@@ -30,15 +30,43 @@ pipeline {
                             secretKeyVariable: 'AWS_SECRET_ACCESS_KEY'
                         ]
                     ]) {
-                        sh 'echo $AWS_ACCESS_KEY_ID'
-                        sh "aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin public.ecr.aws/s7f2n3x3"                                          
+                        
+                        sh "aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin ${ECR_REGISTRY}"                                          
                         // sh 'grep -oP "image: \\K.*" docker-compose.yml | xargs -I {} sudo docker push {}'
-                        sh 'docker tag nps_pipeline_lan_frontend:latest public.ecr.aws/s7f2n3x3/npsfrontend:latest'
-                        sh 'docker push public.ecr.aws/s7f2n3x3/npsfrontend:latest'
+                        sh 'docker tag nps_pipeline_lan_frontend:latest ${ECR_REGISTRY}/npsfrontend:latest'
+                        sh 'docker push ${ECR_REGISTRY}/npsfrontend:latest'
                     }
                 }
             }
         }
+        stage('Push the BE userdataservice image to the ECR') {
+            steps {
+                script {
+                    withCredentials([
+                        [
+                            $class: 'AmazonWebServicesCredentialsBinding',
+                            accessKeyVariable: 'AWS_ACCESS_KEY_ID',
+                            credentialsId: '7b75a6d6-7f8e-42b6-840c-6182b4101b77', // ID of the AWS credentials in Jenkins
+                            secretKeyVariable: 'AWS_SECRET_ACCESS_KEY'
+                        ]
+                    ]) {
+                        
+                        sh "aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin ${ECR_REGISTRY}"                                          
+                        // sh 'grep -oP "image: \\K.*" docker-compose.yml | xargs -I {} sudo docker push {}'
+                        sh 'docker tag nps_pipeline_lan_userdataservice:latest ${ECR_REGISTRY}/userdataservice:latest'
+                        sh 'docker tag nps_pipeline_lan_nps:latest ${ECR_REGISTRY}/nps1:latest'
+                        sh 'docker tag nps_pipeline_lan_calculationservice:latest ${ECR_REGISTRY}/calculationservice:latest'
+                        sh 'docker tag nps_pipeline_lan_baseservice:latest ${ECR_REGISTRY}/baseservice:latest'
+                        sh 'docker tag nps_pipeline_lan_authservice:latest ${ECR_REGISTRY}/authservice:latest'
+                        sh 'docker push ${ECR_REGISTRY}/userdataservice:latest'
+                        sh 'docker push ${ECR_REGISTRY}/nps1:latest'
+                        sh 'docker push ${ECR_REGISTRY}/calculationservice:latest'
+                        sh 'docker push ${ECR_REGISTRY}/baseservice:latest'
+                        sh 'docker push ${ECR_REGISTRY}/authservice:latest'
+                    }
+                }
+            }
+        }        
     }
 }
 
