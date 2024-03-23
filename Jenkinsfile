@@ -14,7 +14,7 @@ pipeline {
                     git branch: 'main', url: 'https://github.com/sayanalokesh/NPS_capstone_updated.git'
                     // , credentialsId: 'gitAutoDeployToken'
                     // sh "${WORKSPACE}/SampleMERNwithMicroservices/"
-                    sh 'whoami'
+                    // sh 'whoami'
                     // sh 'echo "HeroVired" | sudo -S docker-compose build'
                     // // sh 'sudo docker-compose build'
                     // sh 'echo "HeroVired" sudo docker-compose up -d'
