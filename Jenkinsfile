@@ -12,13 +12,13 @@ pipeline {
             steps {
                 script {
                     git branch: 'main', url: 'https://github.com/sayanalokesh/NPS_capstone_updated.git'
-                    def userInput = input(
-                        id: 'passwordInput', 
-                        message: 'Enter your password', 
-                        parameters: [string(defaultValue: '', description: '', name: 'password')]
-                    )
-                    // Configure sudo to not require password for docker-compose
-                    sh "echo '${userInput}' | sudo -S sh -c 'echo \"%sudo ALL=(ALL) NOPASSWD: /var/lib/jenkins/workspace/nps_capstone/docker-compose\" > /etc/sudoers.d/docker-compose'"
+                    // def userInput = input(
+                    //     id: 'passwordInput', 
+                    //     message: 'Enter your password', 
+                    //     parameters: [string(defaultValue: '', description: '', name: 'password')]
+                    // )
+                    // // Configure sudo to not require password for docker-compose
+                    // sh "echo '${userInput}' | sudo -S sh -c 'echo \"%sudo ALL=(ALL) NOPASSWD: /var/lib/jenkins/workspace/nps_capstone/docker-compose\" > /etc/sudoers.d/docker-compose'"
                     sh 'ls'
                     sh 'whoami'
                     sh 'sudo -S docker-compose build'
