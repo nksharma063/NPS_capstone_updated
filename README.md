@@ -22,6 +22,23 @@ Checking out running container:
 docker ps
 ```
 
+### Environment 
+  We created three environments using fork
+     Prashant : Main environment which will execute the code in production
+     Lokesh, Neeraj and Ajay Forked code and pipeline will be considere as Dev ------ Staging ---- Beta
+
+### Docker Compose 
+We have tested services on different ports using docker-compose up command to run the containers.
+We have verified that all services are working fine on ports 3000 to 3008
+  docker compose up
+  docker compose up --watch //Observer teh behaviour of the aplication and implement new features and testing it without building the image again.
+  https://docs.docker.com/compose/gettingstarted/#step-4-edit-the-compose-file-to-use-compose-watch
+
+
+### Building, Pushing the files to repository using jenkins once testing is completed using container
+
+
+#
 Stopping docker:
 ```sh
 docker stop containerId
