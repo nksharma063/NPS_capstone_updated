@@ -63,9 +63,24 @@ We have verified that all services are working fine on ports 3000 to 3008
 
 We have authenticated teh credentials, we have also build the tagging with three microsorvices for the rollback strategy in case for any disaster, through different running versions locally, due to limitation constraint on aws, we just tested with latest tag images on cloud.
 
-   
-
+### Deployement
+5 pods of backend is deployed using kubernetes.
+1 pod of front end is deployed using frontend deployed.yaml file.
+Each pods are assoicated with a service file one for each backend and front end.
 #
+
+#######
+
+In Future we will two more microervice will be added " Short URL and Core API, We will also implement the creation of image and code for deployement as pods:
+
+We will deploy the all the conogiration file and code and aws environment using terraform and all the configuration like kubernetses, docker, jenkins using terraform, nginx etc.
+
+#############
+
+
+
+
+###Rough Work
 Stopping docker:
 ```sh
 docker stop containerId
