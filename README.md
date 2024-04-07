@@ -37,13 +37,18 @@ We have verified that all services are working fine on ports 3000 to 3008
 
 ### Building, Pushing the files to repository using jenkins once testing is completed using 
 
-
+                    ###### Composing the file
                     git branch: 'main', url: 'https://github.com/sayanalokesh/NPS_capstone_updated.git'            
                     sh 'ls'
                     sh 'whoami'
                     sh 'sudo -S docker-compose build'                    
-                    sh "aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin ${ECR_REGISTRY}"                                          
-                        sh 'grep -oP "image: \\K.*" docker-compose.yml | xargs -I {} sudo docker push {}'
+                    sh "aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin ${ECR_REGISTRY}"                      
+                         ##### Pushing the front image to ecr repoitory
+                         sh "aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin ${ECR_REGISTRY}"                                          
+                        // sh 'grep -oP "image: \\K.*" docker-compose.yml | xargs -I {} sudo docker push {}'
+                        sh 'docker tag nps_pipeline_lan_frontend:latest ${ECR_REGISTRY}/npsfrontend:latest'
+                        sh 'docker push ${ECR_REGISTRY}/npsfrontend:latest
+                        Pushing the backend images to ECR repostiry
                         sh 'docker tag nps_pipeline_lan_userdataservice:latest ${ECR_REGISTRY}/userdataservice:latest'
                         sh 'docker tag nps_pipeline_lan_nps:latest ${ECR_REGISTRY}/nps1:latest'
                         sh 'docker tag nps_pipeline_lan_calculationservice:latest ${ECR_REGISTRY}/calculationservice:latest'
