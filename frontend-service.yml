@@ -3,10 +3,10 @@ kind: Service
 metadata:
   name: frontend-service
 spec:
-  
   selector:
-    app: frontend
+    app.kubernetes.io/name: frontend
   type: LoadBalancer
   ports:
-  - port: 4200
-    targetPort: 80
+  - protocol: TCP
+    port: 80
+    targetPort: 4200
