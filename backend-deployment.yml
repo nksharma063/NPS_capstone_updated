@@ -20,50 +20,29 @@ spec:
             memory: "128Mi"
             cpu: "500m"
         ports:
-        - containerPort: 3000
+        - containerPort: 3006
       - name: myapp
-        image: public.ecr.aws/s7f2n3x3/authservice:latest
+        image: public.ecr.aws/s7f2n3x3/nps1:latest
         resources:
           limits:
             memory: "128Mi"
             cpu: "500m"
         ports:
-        - containerPort: 3000
+        - containerPort: 3005
       - name: myapp
-        image: public.ecr.aws/s7f2n3x3/authservice:latest
+        image: public.ecr.aws/s7f2n3x3/calculationservice:latest
         resources:
           limits:
             memory: "128Mi"
             cpu: "500m"
         ports:
-        - containerPort: 3000
+        - containerPort: 3008
       - name: myapp
-        image: public.ecr.aws/s7f2n3x3/authservice:latest
+        image: public.ecr.aws/s7f2n3x3/baseservice:latest
         resources:
           limits:
             memory: "128Mi"
             cpu: "500m"
         ports:
-        - containerPort: 3000
-      - name: myapp
-        image: public.ecr.aws/s7f2n3x3/authservice:latest
-        resources:
-          limits:
-            memory: "128Mi"
-            cpu: "500m"
-        ports:
-        - containerPort: 3000
-      - name: myapp
-        image: public.ecr.aws/s7f2n3x3/authservice:latest
-        resources:
-          limits:
-            memory: "128Mi"
-            cpu: "500m"
-        ports:
-        - containerPort: 3000
-
-
-
-        
-
+        - containerPort: 3003
 
