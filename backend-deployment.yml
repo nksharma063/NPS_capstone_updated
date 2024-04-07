@@ -13,7 +13,7 @@ spec:
         app: myapp
     spec:
       containers:
-      - name: myapp
+      - name: userdata
         image: public.ecr.aws/s7f2n3x3/userdataservice:latest
         resources:
           limits:
@@ -21,7 +21,7 @@ spec:
             cpu: "500m"
         ports:
         - containerPort: 3006
-      - name: myapp
+      - name: nps
         image: public.ecr.aws/s7f2n3x3/nps1:latest
         resources:
           limits:
@@ -29,7 +29,7 @@ spec:
             cpu: "500m"
         ports:
         - containerPort: 3005
-      - name: myapp
+      - name: authservice
         image: public.ecr.aws/s7f2n3x3/authservice:latest
         resources:
           limits:
@@ -37,7 +37,7 @@ spec:
             cpu: "500m"
         ports:
         - containerPort: 3001
-      - name: myapp
+      - name: calculationservice
         image: public.ecr.aws/s7f2n3x3/calculationservice:latest
         resources:
           limits:
@@ -45,7 +45,7 @@ spec:
             cpu: "500m"
         ports:
         - containerPort: 3008
-      - name: myapp
+      - name: baseservice
         image: public.ecr.aws/s7f2n3x3/baseservice:latest
         resources:
           limits:
