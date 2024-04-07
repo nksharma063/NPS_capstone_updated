@@ -4,7 +4,7 @@ metadata:
   name: myapp-service
 spec:
   selector:
-    app: myapp
+    app.kubernetes.io/name: myapp
   type: LoadBalancer
   ports:
   - port: 4292
