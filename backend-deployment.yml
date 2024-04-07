@@ -30,6 +30,14 @@ spec:
         ports:
         - containerPort: 3005
       - name: myapp
+        image: public.ecr.aws/s7f2n3x3/authservice:latest
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 3001
+      - name: myapp
         image: public.ecr.aws/s7f2n3x3/calculationservice:latest
         resources:
           limits:
