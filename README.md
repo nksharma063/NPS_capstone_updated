@@ -36,7 +36,23 @@ We have verified that all services are working fine on ports 3000 to 3008
 
 
 ### Building, Pushing the files to repository using jenkins once testing is completed using container
+sh "aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin ${ECR_REGISTRY}"                                          
+                        // sh 'grep -oP "image: \\K.*" docker-compose.yml | xargs -I {} sudo docker push {}'
+                        sh 'docker tag nps_pipeline_lan_userdataservice:latest ${ECR_REGISTRY}/userdataservice:latest'
+                        sh 'docker tag nps_pipeline_lan_nps:latest ${ECR_REGISTRY}/nps1:latest'
+                        sh 'docker tag nps_pipeline_lan_calculationservice:latest ${ECR_REGISTRY}/calculationservice:latest'
+                        sh 'docker tag nps_pipeline_lan_baseservice:latest ${ECR_REGISTRY}/baseservice:latest'
+                        sh 'docker tag nps_pipeline_lan_authservice:latest ${ECR_REGISTRY}/authservice:latest'
+                        sh 'docker push ${ECR_REGISTRY}/userdataservice:latest'
+                        sh 'docker push ${ECR_REGISTRY}/nps1:latest'
+                        sh 'docker push ${ECR_REGISTRY}/calculationservice:latest'
+                        sh 'docker push ${ECR_REGISTRY}/baseservice:latest'
+                        sh 'docker push ${ECR_REGISTRY}/authservice:latest'
 
+
+We have authenticated teh credentials, we have also build the tagging with three microsorvices for the rollback strategy in case for any disaster, through different running versions locally, due to limitation constraint on aws, we just tested with latest tag images on cloud.
+
+   
 
 #
 Stopping docker:
